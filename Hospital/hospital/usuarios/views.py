@@ -135,7 +135,7 @@ def Paciente_view(request,perfil):
 @login_required
 def Personal_view(request,perfil):
 	if request.method=='POST':
-		form=Personal_Form(request.POST,request.FILES)
+		form = Personal_Form(request.POST,request.FILES)
 		if form.is_valid():
 			form.save()
 		return redirect(PerfilView,perfil)

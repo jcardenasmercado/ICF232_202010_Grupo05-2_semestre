@@ -89,14 +89,14 @@ def contraseña_edit(request):
 @login_required
 def visitas_programadas_esp(request):
 	current_user = request.user
-	group=Group.objects.all()
+	group = Group.objects.all()
 	for g in group:
 		if g.name != 'Administrador' and g.name != 'Personal' and g.name != 'Tutores':
-			user=User.objects.filter(groups__id=g.id)
+			user = User.objects.filter(groups__id=g.id)
 			for u in user:
 				if u.id == current_user.id:
 					name=g.name
-					user_group=User.objects.filter(groups__name=name)
+					user_group = User.objects.filter(groups__name=name)
 	px = instance = get_object_or_404(Personal, id_perfil_id = current_user.id)
 	tl = get_object_or_404(Perfil,id=current_user.id)
 	visita = Visita.objects.all()

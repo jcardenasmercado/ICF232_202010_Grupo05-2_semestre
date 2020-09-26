@@ -8,11 +8,8 @@ class Registro_Form(UserCreationForm):
 	first_name = forms.CharField(max_length=140, required = True)
 	last_name = forms.CharField(max_length=140, required=False)
 	email = forms.EmailField(required=True)
-	 
-
 	class Meta:
 		model = User
-
 		fields = [
 			 'username',
 			 'email',
@@ -22,27 +19,15 @@ class Registro_Form(UserCreationForm):
 			 'password2'
 			 ]
 
-
-	
-     
-
-
-
-
-
-
 class Perfil_Form(forms.ModelForm):
 	class Meta:
 		ROL=(
 			('PERSONAL','Personal'),
 			('TUTOR','Tutor'),
 			('ADMINISTRADOR','Administrador'))
-
 		model = Perfil
-
 		fields=['rol',
 				'tel']
-
 		widgets={
 		
 		'rol':forms.Select(choices=ROL,attrs={'class':'form-control'}),
@@ -107,15 +92,10 @@ class Tutor_Form(forms.ModelForm):
 
 class Personal_Form(forms.ModelForm):
 	class Meta:
-
 		ESPECIALIDAD=(('ENFERMERO','Enfermero'),('TECNICO','Técnico'),('KINESIOLOGO','Kinesiologo'), ('MEDICO','Médico'))
-
-
 		model = Personal
-
 		fields =['id_perfil','rut','especialidad','file']
-
 		widgets ={
-		'rut':forms.TextInput(attrs={'class':'form-control',"id":"rut", "required oninput":"checkRut(this)", "maxlength":"10"}),
-		'especialidad': forms.Select(choices=ESPECIALIDAD,attrs={'class':'form-control'})
+			'rut':forms.TextInput(attrs={'class':'form-control',"id":"rut", "required oninput":"checkRut(this)", "maxlength":"10"}),
+			'especialidad': forms.Select(choices=ESPECIALIDAD,attrs={'class':'form-control'})
 		}

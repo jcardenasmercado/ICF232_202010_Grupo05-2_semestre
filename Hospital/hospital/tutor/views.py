@@ -29,9 +29,7 @@ def home_tutor(request):
 	tx = instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
 	px = instance = get_object_or_404(Paciente, id_tutor_id = tx.id)
 	
-
 	context = {
-
 		"nom": current_user.first_name,
 		"ape":current_user.last_name,
 		"email": current_user.email,
@@ -39,7 +37,6 @@ def home_tutor(request):
 		"paciente": px,
 		"tutor": tx,
 		"actual":current_user,
-
 	}
 	return render(request,"home_tutor.html",context)
 
