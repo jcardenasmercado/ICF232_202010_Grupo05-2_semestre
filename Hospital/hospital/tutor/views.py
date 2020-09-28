@@ -77,6 +77,7 @@ def biblioteca_tutor(request, id=None):
 		"archivo_unico":archivo_unico,
 		"pxid":px.id,
 		"paciente":px,
+		"actual": current_user,
 	}
 
 
@@ -160,20 +161,15 @@ def ver_respuesta (request,id=None):
 	px = instance = get_object_or_404(Paciente, id_tutor_id = tut.id)
 
 	context = {
-
 		"actual":current_user,
 		"con":con,
 		"paciente":px,
-
 	}
 	return render(request,"ver_respuesta.html",context)
 
-
-
-
-
 @login_required
 def contraseña_edit(request):
+	current_user = request.user
 	if request.method == 'POST':
 		form = PasswordChangeForm(request.user, request.POST)
 		if form.is_valid():
@@ -184,9 +180,6 @@ def contraseña_edit(request):
 		else:
 			messages.error(request, 'Porfavor introduzca contraseña correcta')
 			return redirect(contraseña_edit)
-			
 	else:
 		form = PasswordChangeForm(request.user)
 		return render(request,'contra_edit.html',{'form': form})
-		
-

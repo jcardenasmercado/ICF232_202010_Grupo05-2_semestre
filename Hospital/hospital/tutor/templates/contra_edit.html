@@ -7,12 +7,9 @@
 
 <div class="container" style="max-width: 800px; margin-top: 20px;">
 	<h1>Cambiar Contraseña</h1><br>
-
-
 	<form method="post">
   	{% csrf_token %}
 	  <div>
-
 	  	<label>Contraseña Antigua:</label>
 	  	<input type="password" name="old_password" autofocus="" required="" id="id_old_password" class="form-control">
 	  </div>
@@ -24,10 +21,6 @@
 	  	  <label>Repetir Contraseña:</label>
 	  	  <input type="password" name="new_password2" required="" id="id_new_password2" class="form-control">
 	  </div><br>
-
 	  <button class="btn btn-danger" type="submit">Guardar</button>
 </form>
-
-
-
 {%  endblock content %}
