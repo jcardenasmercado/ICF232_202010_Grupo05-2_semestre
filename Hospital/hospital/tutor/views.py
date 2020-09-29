@@ -46,9 +46,7 @@ def ver_perfil (request):
 	tx = instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
 	px = instance = get_object_or_404(Paciente, id_tutor_id = tx.id)
 	tl = get_object_or_404(Perfil,id=current_user.id)
-
 	context = {
-
 		"nom": current_user.first_name,
 		"ape":current_user.last_name,
 		"email": current_user.email,
@@ -59,7 +57,6 @@ def ver_perfil (request):
 		"tel":tl.tel,
 		"usr":tl,
 		"id_actual":current_user.id,
-
 	}
 	return render(request,"ver_perfil.html",context)
 
@@ -70,22 +67,17 @@ def biblioteca_tutor(request, id=None):
 	tx = get_object_or_404(Tutor, id_perfil_id = current_user.id)
 	px = instance = get_object_or_404(Paciente, id_tutor_id = tx.id)
 	archivo_unico = Archivo_Unico.objects.all()
-
 	context = {
-
 		"archivo":archivo,
 		"archivo_unico":archivo_unico,
 		"pxid":px.id,
 		"paciente":px,
 		"actual": current_user,
 	}
-
-
 	return render(request,'biblioteca_tutor.html',context)
 
 @login_required
 def Tutor_edit(request,perfil=None,id_detalle=None):
-	
 	tutor=Tutor.objects.get(id=id_detalle)
 	if request.method=='GET':
 		form1=Tutor_Form(instance=tutor)
@@ -98,12 +90,12 @@ def Tutor_edit(request,perfil=None,id_detalle=None):
 
 @login_required
 def Paciente_edit(request,id_tutor=None,id_paciente=None):
-	paciente=Paciente.objects.get(id=id_paciente)
-	tutor=Tutor.objects.get(id=id_tutor)
+	paciente = Paciente.objects.get(id=id_paciente)
+	tutor = Tutor.objects.get(id=id_tutor)
 	if request.method=='GET':
-		form=Paciente_Form(instance=paciente)
+		form = Paciente_Form(instance=paciente)
 	else:
-		form=Paciente_Form(request.POST,instance=paciente)
+		form = Paciente_Form(request.POST,instance=paciente)
 		if form.is_valid():
 			form.save()
 		return redirect(ver_perfil)
