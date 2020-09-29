@@ -193,6 +193,7 @@ def visita_paciente(request):
         "px": px,
         "aux":instance.id,
         "paciente":pax,
+        "actual": current_user,
     }	
     return render(request,"visita_paciente.html",context)
 

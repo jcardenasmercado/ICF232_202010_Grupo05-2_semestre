@@ -174,4 +174,4 @@ def contraseña_edit(request):
 			return redirect(contraseña_edit)
 	else:
 		form = PasswordChangeForm(request.user)
-		return render(request,'contra_edit.html',{'form': form})
+		return render(request,'contra_edit.html',{'form': form, 'actual': current_user})

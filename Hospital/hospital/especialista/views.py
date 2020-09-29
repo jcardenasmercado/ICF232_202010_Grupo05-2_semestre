@@ -55,8 +55,9 @@ def ver_perfil_e (request):
 
 @login_required
 def biblioteca_e(request):
+	current_user = request.user
 	archivo = Archivo.objects.all()
-	return render(request,'biblioteca_especialista.html',{'archivo':archivo})
+	return render(request,'biblioteca_especialista.html',{'archivo':archivo, 'actual': current_user})
 
 @login_required
 def Especialista_edit(request,perfil=None,id_personal=None):
@@ -72,6 +73,7 @@ def Especialista_edit(request,perfil=None,id_personal=None):
 
 @login_required
 def contraseña_edit(request):
+	current_user = request.user
 	if request.method == 'POST':
 		form = PasswordChangeForm(request.user, request.POST)
 		if form.is_valid():
@@ -84,7 +86,7 @@ def contraseña_edit(request):
 			return redirect(contraseña_edit)
 	else:
 		form = PasswordChangeForm(request.user)
-		return render(request,'contra_especialista_edit.html',{'form': form})
+		return render(request,'contra_especialista_edit.html',{'form': form, 'actual': current_user})
 		
 @login_required
 def visitas_programadas_esp(request):
