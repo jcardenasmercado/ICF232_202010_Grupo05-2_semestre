@@ -28,3 +28,28 @@ Personal------------(personal interno del hospital,quienes van a terreno tienen 
     Enfermero-------
         username: Fabian
         pass: fabcar1234
+
+------------------------------------------------------------------------------------------
+PARA BRANCH EN MySQL Workbench USAR ESTAS WEAS:
+
+Superuser-------
+username: admin
+password: admin
+correo: ducheylard.andre@gmail.com
+
+Administrador--------
+username: 
+password: 
+
+Tutor----------(el paciente no tiene u usuario ,es el tutor quien maneja la app y tiene asignado la info del paciente)
+username: 
+pass: 
+
+Personal------------(personal interno del hospital,quienes van a terreno tienen distintos roles dentro del sistema)
+    Doctor----------
+        username: 
+        pass: 
+
+    Enfermero-------
+        username: 
+        pass: 

@@ -5,7 +5,6 @@ from django.dispatch import receiver
 
 
 
-
 class Perfil(models.Model):
 	usuario = models.OneToOneField(User,on_delete=models.CASCADE)
 	rol = models.CharField(null=False,max_length=20)
@@ -42,7 +41,6 @@ class Paciente(models.Model):
 	episodio=models.IntegerField(null=False, default=1)
 	tipo=models.CharField(max_length=30, default="Vacio")
 
-	
 	def __str__(self):
 		return self.nombre
 	
@@ -58,19 +56,12 @@ class Personal(models.Model):
 		return str(self.id_perfil.usuario.username)
 
 
-
 @receiver(post_save, sender=User)
 def crear_usuario_perfil(sender, instance, created, **kwargs):
     if created:
         Perfil.objects.create(usuario=instance)
 
+
 @receiver(post_save, sender=User)
 def guardar_usuario_perfil(sender, instance, **kwargs):
     instance.perfil.save()
-
-
-
-
-
-# Create your models here. 
-
