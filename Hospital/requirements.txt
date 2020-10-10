@@ -4,3 +4,4 @@ gunicorn
 coverage
 django-heroku
 django-cors-headers
+mysqlclient
