@@ -1,23 +1,12 @@
-
 {% extends "base.html" %}
-
 {% block content %}
-
-
 <style>
-
-
 input[type="radio"] {
   display: none;
 }
-
 label {
   color: orange;
 }
-
-
-
-
 .table a.table-link.danger {
     color: #e74c3c;
 }
@@ -46,7 +35,6 @@ a {
     float: left;
     margin-right: 15px;
 }
-
 .table thead tr th {
     text-transform: uppercase;
     font-size: 0.875em;
@@ -64,7 +52,6 @@ a {
     border-top: 1px solid #e7ebee;
     padding: 12px 8px;
 }
-
 #lupa{
     position: relative;
     left: 267px;
@@ -72,7 +59,6 @@ a {
 	top:-37px;
     font-size: 24px;
 }
-
 #refresh{
     position: relative;
     left: 329px;
@@ -80,49 +66,33 @@ a {
 	top:-68px;
     font-size: 24px;
 }
-
 #rut{
     border:solid 2px #17A2B8;
 }
 </style>
 
 <div class=" row row-cols-3" style="margin-left:-70px;">
-   
     <div class="col-sm-7">
         <h1> Pacientes Antiguos</h1> 
-        
-     
     </div>
-    
-  
-
-   
-        
-
-
     <div class="col-lg-5" style="height:70px;">
         <a style="float:right; margin-top:20px;" href='{% url "registro" %}' class="btn btn-info">  Nuevo Usuario </a></div>
     <div class="col-lg-8">
         <div class="row" style="margin-bottom: -70px;" >
-           
             <form method="get">
                 <div id="custom-search-input" >
                     <input id="rut" type="text" style="width: 300px; margin-left:15px;" class="form-control" required oninput="checkRut(this)" minlength="1" maxlength="10" placeholder="Ingrese Rut..." name="buscar">
                     <span class="input-group-list">
                         <button id="lupa" type="submit" style="border:none;"class="button btn btn-info"><i class="fas fa-search"></i></button></br> 
                         <a href='{% url "reingreso" %}' id="refresh" style="border: none;"><i class="fas fa-sync"></i></a>    
-                        
                     </span>
-                    
                 </div>
             </form>
-        
         </div>
         <div class="table-responsive">
             <table class="table user-list">
                 <thead>
                     <tr>    
-                    
                     <th><span>Nombre Completo</span></th>
                     <th><span>Rut</span></th>                
                     <th><span>Opciones</span></th>
@@ -131,38 +101,23 @@ a {
                 </thead>
                 <tbody>
                     {% for obj in object_list %}
-                    
-                    {% if obj.activo == 0%}
-    
-                    <tr>
-                        
-                        <td style="width: 28%;">                                      
-                            <span  class="user-subhead"> {{obj.nombre}} {{obj.apellido1}} {{obj.apellido2}} </span>
-                        </td>
-                        <td style="width: 30%;">{{obj.rut}}</td> 
-                        <td style="width: 50%;">
-                        
-                            <a href='{%  url "reingresopaciente" id=obj.id %}' class="btn btn-danger"> Reingresar </a
-                            >
-                            <a href='{%  url "observaciones" id=obj.id %}' class="btn btn-success"> Observaciones </a
-                            >                                                               
-                        </td>
-    
-                            
-                    </tr>
-    
-                            {% endif %}
-                            {% endfor %}
-                    </tbody>
-                    </table>
-                </div>
-    </div>      
-    
-    
-    
-    
-    
- 
+                        {% if obj.activo == 0%}
+                            <tr>
+                                <td style="width: 28%;">                                      
+                                    <span  class="user-subhead"> {{obj.nombre}} {{obj.apellido1}} {{obj.apellido2}} </span>
+                                </td>
+                                <td style="width: 30%;">{{obj.rut}}</td> 
+                                <td style="width: 50%;">
+                                    <a href='{%  url "reingresopaciente" id=obj.id %}' class="btn btn-danger"> Reingresar </a>
+                                    <a href='{%  url "observaciones" id=obj.id %}' class="btn btn-success"> Observaciones </a>                                                               
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div> 
 </div>
 
 
